@@ -2,7 +2,7 @@ from .SIR import SIRModel
 import numpy as np
 import matplotlib.pyplot as plt
 
-class SIR_BD(SIRModel):
+class SIRBDModel(SIRModel):
     def __init__(self, N0, s0, i0, r0, beta, gamma, epsilon, delta, tmax, stepsize):
         """
         Initialize the SIR model with birth and death dynamics.
@@ -72,19 +72,24 @@ class SIR_BD(SIRModel):
     
     # method override
     def plot(self, title='SIR-BD Model', show=False):
+
+        # turn off auto rendering of plots if we dont want to show it
+        # additional plot changes outside of this still render 
+        if not show:
+            plt.ioff()  
+
         fig, ax = plt.subplots()
         ax.plot(self.time, self.S, color='b', label='Susceptible')
         ax.plot(self.time, self.I, color='r', label='Infected')
         ax.plot(self.time, self.R, color='k', label='Recovered')  
-        ax.plot(self.time, self.N, color='g', label='Population size')
+
+        ax.plot(self.time, self.N, color="g", label="Population size")
+        
         ax.set_title(title)
         ax.set_xlabel('Time')
         ax.set_ylabel('Population')
         ax.legend()
         ax.set_ylim(bottom=0)
-        ax.set_xlim(left=0)
-
-        if show:
-            plt.show()
+        ax.set_xlim(left=0) 
 
         return fig, ax

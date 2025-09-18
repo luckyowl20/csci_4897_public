@@ -65,8 +65,13 @@ class SIRModel:
                 self.R[idx] = self.R[idx-1] + dR_dt * self.stepsize
 
         return self.S, self.I, self.R, self.time
-    
-    def plot(self, title='SIR Model', show=True):
+
+    def plot(self, title='SIR Model', show=False):
+        # turn off auto rendering of plots if we dont want to show it
+        # additional plot changes outside of this still render 
+        if not show:
+            plt.ioff()  
+
         fig, ax = plt.subplots()
         ax.plot(self.time, self.S, color='b', label='Susceptible')
         ax.plot(self.time, self.I, color='r', label='Infected')
@@ -76,9 +81,6 @@ class SIRModel:
         ax.set_ylabel('Population')
         ax.legend()
         ax.set_ylim(bottom=0)
-        ax.set_xlim(left=0)
-
-        if show:
-            plt.show()
+        ax.set_xlim(left=0) 
 
         return fig, ax
