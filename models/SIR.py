@@ -66,6 +66,8 @@ class SIRModel:
 
         return self.S, self.I, self.R, self.time
 
+
+
     def plot(self, title='SIR Model', show=False):
         # turn off auto rendering of plots if we dont want to show it
         # additional plot changes outside of this still render 
