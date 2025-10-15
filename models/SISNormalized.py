@@ -61,7 +61,7 @@ class SIS():
         ax.plot(self.time, self.analytical, color='k', label='Analytical Solution', linestyle='--')
         ax.set_title(title)
         ax.set_xlabel('Time')
-        ax.set_xlabel('Population Proportion')
+        ax.set_ylabel('Population Proportion')
         ax.legend()
         ax.set_ylim(bottom=0, top=0.5)
         ax.set_xlim(left=0)
