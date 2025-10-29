@@ -68,7 +68,8 @@ class SIRModel4Group:
         
         return self.S, self.I, self.R, self.time
     
-    def prob1c_plot(self, title='Four group SIR Model', show=False):
+    def prob1c_plot(self, cbar, show=False):
+        title = r"Four-group SIR (fully mixed): $R_0=1.5$, $\gamma=3$, $\bar c={:.2f}$".format(cbar)
         if not show:
             plt.ioff()
 
